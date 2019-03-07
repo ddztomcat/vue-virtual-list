@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>vue-virtual-scroll</title>
+    <script type="text/javascript">
+      ; (function (unit) { function reset() { window.HTML = { el: document.documentElement, width: document.documentElement.clientWidth || window.innerWidth, height: document.documentElement.clientHeight || window.innerHeight }; window.HTML.el.style.fontSize = HTML.width * unit / 375 + "px" } reset(); document.addEventListener("DOMContentLoaded", function () { reset() }); document.addEventListener("WeixinJSBridgeReady", function () { reset() }, false); window.addEventListener("pageshow", function () { reset() }); window.addEventListener("load", function () { reset() }); window.addEventListener("resize", function () { setTimeout(function () { reset() }, 30) }) })(20);
+    </script>
   </head>
   <body>
     <noscript>
