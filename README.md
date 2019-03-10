@@ -1,4 +1,4 @@
-# vue-virtual-scroll
+# vue-virtual-list
 
 ## Project setup
 ```

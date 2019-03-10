@@ -8,6 +8,7 @@
         {{item.id + ' ' + item.text}}
       </virtual-scroll-dynamic-item>
     </vue-virtual-scroll-dynamic>
+    <test-child></test-child>
   </div>
 </template>
 
