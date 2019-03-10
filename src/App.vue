@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <vue-virtual-scroll :size="30" :keep="10" :remUnit="0">
+    <!-- <vue-virtual-scroll :size="30" :keep="10" :remUnit="0">
       <div class="item" v-for="item in items" :key="item">{{item}}</div>
-    </vue-virtual-scroll>
+    </vue-virtual-scroll> -->
+    <vue-virtual-scroll-dynamic :itemsArray="items" :minSize="30" :keep="10">
+      <virtual-scroll-dynamic-item class="item" v-for="(item, ind) in items" :index="ind" :key="item.id">
+        {{item.id + ' ' + item.text}}
+      </virtual-scroll-dynamic-item>
+    </vue-virtual-scroll-dynamic>
   </div>
 </template>
 
 <script>
-
+import {generateText} from './test/index'
 
 export default {
   name: 'app',
@@ -16,7 +21,7 @@ export default {
       items: (() => {
         let a = []
         for(let i = 0; i < 10000; i++)
-        a.push(i)
+        a.push({id: i,text: generateText()})
         return a
       })()
     }
@@ -34,11 +39,11 @@ export default {
   margin-top: 60px;
 }
 .item {
-  height: 30px;
-  line-height: 30px;
+  min-height: 30px;
+  /* line-height: 30px; */
   border-bottom: 1px solid burlywood;
 }
 body {
-  /* font-size: 12px; */
+  font-size: 12px;
 }
 </style>
