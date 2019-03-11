@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <!-- <vue-virtual-scroll :size="30" :keep="10" :remUnit="0">
-      <div class="item" v-for="item in items" :key="item">{{item}}</div>
-    </vue-virtual-scroll> -->
-    <vue-virtual-scroll-dynamic :itemsArray="items" :minSize="30" :keep="10">
-      <virtual-scroll-dynamic-item class="item" v-for="(item, ind) in items" :index="ind" :key="item.id">
+    <virtual-list :size="30" :keep="10" :remUnit="0">
+      <div class="item" v-for="item in items" :key="item.id">{{item.id}}</div>
+    </virtual-list>
+    <virtual-list-dynamic :itemsArray="items" :minSize="30" :keep="10">
+      <virtual-list-dynamic-item class="item" v-for="(item, ind) in items" :index="ind" :key="item.id">
         {{item.id + ' ' + item.text}}
-      </virtual-scroll-dynamic-item>
-    </vue-virtual-scroll-dynamic>
+      </virtual-list-dynamic-item>
+    </virtual-list-dynamic>
     <test-child></test-child>
   </div>
 </template>

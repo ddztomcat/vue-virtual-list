@@ -1,5 +1,5 @@
 export default {
-  name: 'vue-virtual-scroll',
+  name: 'virtual-list',
   install(vue) {
     vue.component(this.name, this)
   },

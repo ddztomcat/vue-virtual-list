@@ -1,5 +1,5 @@
 export default {
-  name: 'vue-virtual-scroll-dynamic',
+  name: 'virtual-list-dynamic',
   install(vue) {
     vue.component(this.name, this)
   },
@@ -12,6 +12,10 @@ export default {
     throttle: {
       type: Number,
       default: 200
+    },
+    dynamic: {
+      type: boolean,
+      default: false
     },
     cache: {
       type: Number,
