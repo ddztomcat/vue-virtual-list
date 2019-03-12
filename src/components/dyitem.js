@@ -3,7 +3,7 @@ export default {
   install(vue) {
     vue.component(this.name, this)
   },
-  inject: ['itemsSize', 'parentRef'],
+  inject: ['parentRef'],
   props: {
     index: Number
   },

@@ -86,7 +86,7 @@ export default {
     this.recalculateBase()
     let realRenders = this.getRealRenderVNodes()
     let p = this.__base
-    console.log(p, realRenders, this.$slots.default)
+    // console.log(p, realRenders, this.$slots.default)
     return h(
       'div',
       {

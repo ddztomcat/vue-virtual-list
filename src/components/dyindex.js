@@ -4,26 +4,26 @@ export default {
     vue.component(this.name, this)
   },
   provide() {
-    return { itemsSize: this.__itemsSize, parentRef: this }
+    return { parentRef: this }
   },
   props: {
     minSize: Number,
-    keep: Number,
+    total: Number,
+    keep: {
+      type: Number,
+      default: 10
+    },
     throttle: {
       type: Number,
-      default: 200
+      default: 20
     },
     dynamic: {
-      type: boolean,
+      type: Boolean,
       default: false
     },
     cache: {
       type: Number,
       default: 10
-    },
-    itemsArray: {
-      type: Array,
-      default: []
     }
   },
   created() {
@@ -32,17 +32,23 @@ export default {
       currentEnd: this.keep + this.cache - 1,
       paddingTop: 0,
       paddingBottom: 0,
-      total: this.itemsArray.length,
+      total: this.total,
       realHeight: 0
     }
     this.__index = 0
     this.__itemsSize = new Array(this.__base.total)
-    this.$on('childUpdate', this.childUpdate)
+    if (this.dynamic) {
+      this.$on('childUpdate', this.childUpdate)
+    } else {
+      for (let i = 0; i < this.total; i++) {
+        this.__itemsSize[i] = this.minSize
+      }
+    }
   },
   methods: {
-    childUpdate(index, bd, ...res) {
+    childUpdate(index, bd) {
       this.__itemsSize[index] = bd.height
-      console.log(index, bd)
+      // console.log(index, bd)
     },
     getRealRenderVNodes() {
       let t = []
@@ -51,8 +57,8 @@ export default {
       }
       return t
     },
-    recalculateBase() {
-      if (!this.__base.total) this.__base.total = this.$slots.default.length
+    recalculateBase() {// 重新计算基础值
+      this.__base.total = this.total
       this.__base.currentStart = this.__index
       this.__base.currentEnd = this.__index + this.keep + this.cache - 1
 
@@ -71,7 +77,7 @@ export default {
       this.__base.paddingTop = ph
       this.__base.paddingBottom = rh - mh - ph
     },
-    getIndex(scrollTop) {
+    getIndex(scrollTop) { // 获取滑动后视口第一个vnode下标
       let h = 0
       for (let i = 0; i < this.__base.total; i++) {
         h += this.__itemsSize[i] ? this.__itemsSize[i] : this.minSize
@@ -90,7 +96,7 @@ export default {
         this.$forceUpdate()
       }
     },
-    getThrottle(fn) {
+    getThrottle(fn) {// 节流 默认每20ms 触发一次滚动，但保证最后一个滚动一定会触发
       let t = Date.now()
       let th = null
       return e => {
@@ -107,7 +113,7 @@ export default {
         }
       }
     },
-    pxOrRem(px) {
+    pxOrRem(px) {// rem 在font-size小数时 容易出现偏差 保留px
       return px + 'px'
     }
   },

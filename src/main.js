@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VirtualScroll from './components/index'
-import VirtualScrollDynamic from './components/dyindex'
-import VirtualScrollDynamicItem from './components/dyitem'
-import {parent, child} from './components/test/parent'
+import { VirtualList, VirtualListItem } from '../lib/index'
+
+import { parent, child } from './components/test/parent'
 
 Vue.config.productionTip = false
-Vue.use(VirtualScroll).use(VirtualScrollDynamic).use(VirtualScrollDynamicItem).use(parent).use(child)
+Vue.use(VirtualScroll)
+  .use(VirtualList)
+  .use(VirtualListItem)
+  .use(parent)
+  .use(child)
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
