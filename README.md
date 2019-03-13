@@ -8,7 +8,7 @@ import { VirtualList, VirtualListItem } from 'virtual-list'
 Vue.use(VirtualList).use(VirtualListItem)
 ```
 ## 代码演示
-
+[预览地址](https://ddztomcat.github.io/vue-virtual-list/)
 #### 固定高度
 `height` 允许为字符串，合法值跟css height 属性一致
 ```html
