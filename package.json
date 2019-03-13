@@ -1,14 +1,16 @@
 {
-  "name": "virtual-list-dynamic",
-  "version": "0.1.0",
+  "name": "virtual-list-alpha",
+  "version": "0.1.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
   "devDependencies": {
-    "vue": "^2.6.6",
     "@suyunfe/postcss-px2rem-extend": "^1.1.0",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
@@ -17,6 +19,8 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "install": "^0.12.2",
+    "vant": "^1.6.9",
+    "vue": "^2.6.6",
     "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
