@@ -11,6 +11,7 @@
       :total="items.length"
       height="200px"
       @reach-bottom="handleReachBottomDynamic"
+      class="scroll"
     >
       <virtual-list-item
         class="item"
@@ -33,6 +34,7 @@
       :total="items1.length"
       height="300px"
       @reach-bottom="handleReachBottom"
+      class="scroll"
     >
       <div
         class="item"
@@ -118,6 +120,10 @@ export default {
 }
 body {
   font-size: 12px;
+}
+.scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 .loading {
   display: flex;

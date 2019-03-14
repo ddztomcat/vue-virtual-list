@@ -1,5 +1,5 @@
 {
-  "name": "virtual-list-alpha",
+  "name": "virtual-list",
   "version": "0.1.1",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -20,6 +20,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "install": "^0.12.2",
     "vant": "^1.6.9",
+    "vconsole": "^3.3.0",
     "vue": "^2.6.6",
     "vue-template-compiler": "^2.5.21"
   },
